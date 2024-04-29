@@ -1,0 +1,29 @@
+[gd_scene load_steps=7 format=3 uid="uid://cpn6b2cqtc80n"]
+
+[ext_resource type="Script" path="res://main/scripts/EnemySpawner.gd" id="1_p2jfg"]
+[ext_resource type="PackedScene" uid="uid://bh4oh8jasy0qv" path="res://main/scenes/enemies/insect.tscn" id="2_0868x"]
+[ext_resource type="Script" path="res://main/scripts/SpawnerInfo.gd" id="3_4q25e"]
+[ext_resource type="PackedScene" uid="uid://4p28ic2rwxu4" path="res://main/scenes/enemies/insect2.tscn" id="4_onu8x"]
+
+[sub_resource type="Resource" id="Resource_onafb"]
+script = ExtResource("3_4q25e")
+time_start = 0.0
+enemy = ExtResource("2_0868x")
+enemy_num = 1
+enemy_spawn_delay = 5
+
+[sub_resource type="Resource" id="Resource_gsvbm"]
+script = ExtResource("3_4q25e")
+time_start = 30.0
+enemy = ExtResource("4_onu8x")
+enemy_num = 1
+enemy_spawn_delay = 5
+
+[node name="EnemySpawner" type="Node2D"]
+script = ExtResource("1_p2jfg")
+SPAWNS = Array[ExtResource("3_4q25e")]([SubResource("Resource_onafb"), SubResource("Resource_gsvbm")])
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

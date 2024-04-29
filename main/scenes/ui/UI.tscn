@@ -1,0 +1,85 @@
+[gd_scene load_steps=2 format=3 uid="uid://bw14v8vfidyg5"]
+
+[ext_resource type="Script" path="res://main/scenes/ui/UI.gd" id="1_2rw1r"]
+
+[node name="Control" type="CanvasLayer"]
+script = ExtResource("1_2rw1r")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="GameLayout" type="VBoxContainer" parent="Control/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer/GameLayout"]
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="Score" type="RichTextLabel" parent="Control/MarginContainer/GameLayout/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+bbcode_enabled = true
+fit_content = true
+autowrap_mode = 0
+
+[node name="DeathLayout" type="VBoxContainer" parent="Control/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 4
+alignment = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/MarginContainer/DeathLayout"]
+layout_mode = 2
+theme_override_constants/margin_top = 256
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer/DeathLayout/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+alignment = 1
+
+[node name="DeathText" type="RichTextLabel" parent="Control/MarginContainer/DeathLayout/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 4
+bbcode_enabled = true
+fit_content = true
+autowrap_mode = 0
+
+[node name="RestartLayout" type="VBoxContainer" parent="Control/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/MarginContainer/RestartLayout"]
+layout_mode = 2
+theme_override_constants/margin_top = 64
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer/RestartLayout/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="TryAgain" type="Button" parent="Control/MarginContainer/RestartLayout/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "Try again"
+
+[connection signal="pressed" from="Control/MarginContainer/RestartLayout/MarginContainer/HBoxContainer/TryAgain" to="." method="_on_try_again_pressed"]

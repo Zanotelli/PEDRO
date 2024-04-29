@@ -1,0 +1,54 @@
+[gd_scene load_steps=3 format=3 uid="uid://bw14v8vfidyg5"]
+
+[ext_resource type="Script" path="res://main/scenes/ui/UI.gd" id="1_2rw1r"]
+[ext_resource type="PackedScene" uid="uid://d18oiwe0kfy4y" path="res://main/scenes/player/PlayerHealthBar.tscn" id="2_b56nr"]
+
+[node name="Control" type="CanvasLayer"]
+script = ExtResource("1_2rw1r")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="Label" type="Label" parent="Control/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Score:"
+
+[node name="Score" type="Label" parent="Control/MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="HealthBar" parent="Control" instance=ExtResource("2_b56nr")]
+layout_mode = 2
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 436.0
+offset_bottom = 31.0

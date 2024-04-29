@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://dwy6tdfqcmc6s"]
+
+[ext_resource type="Script" path="res://main/scripts/PlayerAttackComponent.gd" id="1_krmn4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_d437g"]
+radius = 20.025
+
+[node name="PlayerAttackComponent" type="Area2D"]
+position = Vector2(-38, 39)
+collision_layer = 0
+collision_mask = 32
+monitoring = false
+script = ExtResource("1_krmn4")
+DAMAGE = 20.0
+KNOCK_BACK_FORCE = 200.0
+DURATION = null
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CircleShape2D_d437g")
+debug_color = Color(0.560784, 0.52549, 0.541176, 0.419608)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
